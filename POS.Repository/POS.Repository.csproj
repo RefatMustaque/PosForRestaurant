@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{25FD85E0-9B5F-4B35-B248-9F826C1D70FB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POS.Repository</RootNamespace>
+    <AssemblyName>POS.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\Repository.cs" />
+    <Compile Include="DatabaseContext\PosManagementDbContext.cs" />
+    <Compile Include="Migrations\201808191132283_initial.cs" />
+    <Compile Include="Migrations\201808191132283_initial.Designer.cs">
+      <DependentUpon>201808191132283_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808191409562_byteArray.cs" />
+    <Compile Include="Migrations\201808191409562_byteArray.Designer.cs">
+      <DependentUpon>201808191409562_byteArray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808211601282_sell&amp;sellDetails.cs" />
+    <Compile Include="Migrations\201808211601282_sell&amp;sellDetails.Designer.cs">
+      <DependentUpon>201808211601282_sell&amp;sellDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808232257347_nullable.cs" />
+    <Compile Include="Migrations\201808232257347_nullable.Designer.cs">
+      <DependentUpon>201808232257347_nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808251214436_paybyString.cs" />
+    <Compile Include="Migrations\201808251214436_paybyString.Designer.cs">
+      <DependentUpon>201808251214436_paybyString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808251958046_tableZone.cs" />
+    <Compile Include="Migrations\201808251958046_tableZone.Designer.cs">
+      <DependentUpon>201808251958046_tableZone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ItemCategoryRepository.cs" />
+    <Compile Include="Repositories\ItemRepository.cs" />
+    <Compile Include="Repositories\SellDetailsRepository.cs" />
+    <Compile Include="Repositories\SellRepository.cs" />
+    <Compile Include="Repositories\TableZoneRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\POS.Models\POS.Models.csproj">
+      <Project>{9f79a7fb-0830-455f-970b-baab47862919}</Project>
+      <Name>POS.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808191132283_initial.resx">
+      <DependentUpon>201808191132283_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808191409562_byteArray.resx">
+      <DependentUpon>201808191409562_byteArray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808211601282_sell&amp;sellDetails.resx">
+      <DependentUpon>201808211601282_sell&amp;sellDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808232257347_nullable.resx">
+      <DependentUpon>201808232257347_nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808251214436_paybyString.resx">
+      <DependentUpon>201808251214436_paybyString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808251958046_tableZone.resx">
+      <DependentUpon>201808251958046_tableZone.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

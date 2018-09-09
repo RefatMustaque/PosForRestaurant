@@ -1,0 +1,123 @@
+﻿@model PosForRestaurant.Models.ViewModel.TerminalVM
+@using POS.Models.EntityModels
+@{
+	ViewBag.Title = "Terminal";
+}
+
+<div class="row">
+	<div class="col-md-6 form-group">
+		@using (Html.BeginForm())
+		{
+			@Html.AntiForgeryToken()
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+			<div style="height:250px; overflow-y:auto; border: 2px solid #F0F8FF">
+				<table class="table table-bordered table-condensed table-hover table-responsive table-striped" id="OrderedItemTable">
+					<thead>
+						<tr>
+							<td>
+								Del
+							</td>
+							<td>
+								-
+							</td>
+							<td>
+								Items
+							</td>
+							<td>
+								Price
+							</td>
+							<td>
+								Qty
+							</td>
+							<td>
+								Total
+							</td>
+							<td>
+								Tax
+							</td>
+							<td>
+								Option
+							</td>
+						</tr>
+					</thead>
+					<tbody id="firstTableTbody"></tbody>
+				</table>
+				@Html.HiddenFor(model => model.Date, DateTime.Now)
+			</div>
+			<div class="row container" style="background-color:#DCDCDC; height: 150px; ">
+				<table id="paymentInfoId" style="margin: 20px; min-width:350px">
+					<tr id="paymentInfoTotal" style="color: blue">
+						<td>Total</td>
+						<td></td>
+					</tr>
+					<tr id="paymentInfoDiscount">
+						<td>Discount</td>
+						<td></td>
+					</tr>
+					<tr id="paymentInfoSubTotal" style="font-weight: bold">
+						<td>Sub Total</td>
+						<td></td>
+					</tr>
+					<tr id="paymentInfoTax" style="border-bottom: 3px solid black">
+						<td>Tax <span style="font-size:12px;">14.45</span></td>
+						<td></td>
+					</tr>
+					<tr id="paymentInfoTotalPayable" style="font-size: medium; color: blue">
+						<td>Total Payable</td>
+						<td></td>
+					</tr>
+					<tr id="paymentInfoTotalItemTypes" style="font-size:10px">
+						<td>Total Items Types</td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-6">
+				<input type="submit" value="Payment" class="btn btn-default btn-group-justified" />
+			</div>
+		}
+		<div class="row container">
+			
+			<div class="col-md-6">
+				<button id="suspend" class="btn btn-danger btn-group-justified">Suspend</button>
+			</div>
+		</div>
+
+	</div>
+		<div class="col-md-2" style="overflow-y: scroll;height: 448px">
+			@foreach (ItemCategory itemCategory in Model.ItemCategories)
+			{
+				<div class="itemCategory" id="@itemCategory.Id" style=" height:50px; background-color:#808000; color: white; padding:4px; border: 3px solid black; margin: 3px; text-align: center;padding-top:10px;">
+					@itemCategory.Name
+				</div>
+			}
+		</div>
+		<div class="col-md-4 " style="overflow-y: scroll;height: 448px">
+			<ul class="nav nav-tabs">
+				<li class="active" id="ItemListTab"><a href="#">Item List</a></li>
+			</ul>
+			@foreach (Item item in Model.Items)
+			{
+				var base64 = Convert.ToBase64String(item.Image);
+				var imgsrc = string.Format("data:image/jpeg;base64,{0}", base64);
+				<div class="item categoryId-@item.ItemCategoryId" style="float:left; width:100px; height:100px; background-color:#FF69B4; padding:4px; border: 3px solid black; margin: 3px;">
+					<img src="@imgsrc" style="max-width:30px;max-height:30px;" />
+					<div class="pull-right" style="color:white; background-color:darkblue; display:inline-block"> @String.Format("{0:0.00}", item.SalesPrice)</div>
+					<div style="color:black">@item.Name</div>
+					@Html.Hidden("itemListItemId", @item.Id)
+					@Html.Hidden("itemListItemName", @item.Name)
+					@Html.Hidden("itemListItemPrice", @item.SalesPrice)
+					@Html.Hidden("itemListItemQuantity", @item.Quantity)
+					@Html.Hidden("itemListItemTax", @item.TaxApply)
+					@Html.Hidden("itemListItemDiscount", @item.DiscountRate)
+				</div>
+			}
+		</div>
+	</div>
+
+@section scripts
+	{
+	<script src="~/Scripts/PosRestaurant/SalesRegister/Terminal.js"></script>
+}
+

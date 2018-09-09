@@ -1,0 +1,169 @@
+﻿@model PosForRestaurant.Models.ViewModel.ItemCreateVM
+
+@{
+	ViewBag.Title = "AddItem";
+}
+
+@using (Html.BeginForm("AddItem", "StockList", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal row container" style="height:448px;overflow-y: scroll;">
+		<div class="col-md-4">
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			<div class="form-group">
+				@Html.LabelFor(model => model.Barcode, htmlAttributes: new { @class = "control-label" })
+				<div>
+					@Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+				<div>
+					@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label " })
+				<div>
+					@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label" })
+				<div>
+					@Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.PurchasePrice, htmlAttributes: new { @class = "control-label " })
+				<div>
+					@Html.EditorFor(model => model.PurchasePrice, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.PurchasePrice, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.SalesPrice, htmlAttributes: new { @class = "control-label " })
+				<div>
+					@Html.EditorFor(model => model.SalesPrice, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.SalesPrice, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.DiscountRate, htmlAttributes: new { @class = "control-label " })
+				<div>
+					@Html.EditorFor(model => model.DiscountRate, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.DiscountRate, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-4">
+			<div class="form-group">
+				@Html.LabelFor(model => model.ItemCategoryId, htmlAttributes: new { @class = "control-label " })
+				<div>
+					@Html.DropDownListFor(model => model.ItemCategoryId, new SelectList(Model.ItemCategories, "Id", "Name"), "Select . .", new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.ItemCategoryId, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Supplier, htmlAttributes: new { @class = "control-label " })
+				<div>
+					@Html.EditorFor(model => model.Supplier, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Supplier, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.ShopLocation, htmlAttributes: new { @class = "control-label " })
+				<div>
+					@Html.EditorFor(model => model.ShopLocation, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.ShopLocation, "", new { @class = "text-danger" })
+				</div>
+			</div>
+			<div class="row" style="margin-bottom:10px;">
+				<div class="col-md-6">
+					<div class="form-group">
+						@Html.LabelFor(model => model.TaxApply, htmlAttributes: new { @class = "control-label " })
+						<div>
+							<div class="checkbox">
+								@Html.EditorFor(model => model.TaxApply)
+								@Html.ValidationMessageFor(model => model.TaxApply, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						@Html.LabelFor(model => model.KitchenItem, htmlAttributes: new { @class = "control-label " })
+						<div>
+							<div class="checkbox">
+								@Html.EditorFor(model => model.KitchenItem)
+								@Html.ValidationMessageFor(model => model.KitchenItem, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label " })
+				<div>
+					@Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.ManufacturingDate, htmlAttributes: new { @class = "control-label" })
+				<div>
+					@Html.EditorFor(model => model.ManufacturingDate, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.ManufacturingDate, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.ExpiryDate, htmlAttributes: new { @class = "control-label" })
+				<div>
+					@Html.EditorFor(model => model.ExpiryDate, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger" })
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="form-group">
+				<img id="UImage" src="#" alt="Upload Image" width="100" height="100" />
+				<div>
+					@Html.TextBoxFor(model => model.ImageUpload, new { type = "file", name = "upload", accept = "image/png" })
+					@Html.ValidationMessageFor(model => model.ImageUpload)
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Create" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
+}
+
+@section scripts
+    {
+	<script src="~/Scripts/PosRestaurant/StockList/AddItem.js"></script>
+}
+

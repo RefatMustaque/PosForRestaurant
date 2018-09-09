@@ -1,0 +1,161 @@
+﻿@model PosForRestaurant.Models.ViewModel.TerminalVM
+@using POS.Models.EntityModels
+
+@{
+	ViewBag.Title = "Receit";
+}
+
+
+<div  style=" height: 448px; overflow-y: auto">
+	<div class=" row">
+		
+		<div class="col-md-4 container">
+			<button id="forCustomer" class="btn btn-group-justified btn-default" >Print</button>
+			<div id="customerReceit">
+				<h3 class="text-center">Pos For Restaurant</h3>
+				<h4 class="text-center">Developed by Refat Bin Mustaque</h4>
+				@Html.DisplayNameFor(model => model.TokenNO)
+				@Html.DisplayFor(model => model.TokenNO)<br />
+				@Html.DisplayNameFor(model => model.Date)
+				@Html.DisplayFor(model => model.Date)
+				<table class="table table-condensed">
+					<thead style="background-color:darkgray">
+						<tr>
+							<td>
+								Items
+							</td>
+							<td>
+								Quantity
+							</td>
+							<td>
+								Total
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (SellDetails SellDetails in Model.SellDetailses)
+						{
+							<tr>
+								<td>@SellDetails.Item.Name</td>
+								<td>@SellDetails.Quantity</td>
+								<td>@SellDetails.ItemTotal</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+				<table class="table" style="border-top: 2px solid black; border-bottom: 2px solid black">
+					<tr>
+						<td>
+							@Html.DisplayNameFor(model => model.SubTotal)
+						</td>
+						<td>
+							@Html.DisplayFor(model => model.SubTotal)
+						</td>
+					</tr>
+					<tr>
+						<td>
+
+							@Html.DisplayNameFor(model => model.OverallDiscount)
+
+
+
+						</td>
+						<td>
+
+							@Html.DisplayFor(model => model.OverallDiscount)
+
+						</td>
+					</tr>
+					<tr>
+						<td>
+
+
+							@Html.DisplayNameFor(model => model.Tax)
+
+
+
+						</td>
+						<td>
+
+							@Html.DisplayFor(model => model.Tax)
+
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Net Amount
+						</td>
+						<td>
+							@Html.DisplayFor(model => model.TotalPayable)
+						</td>
+					</tr>
+
+				</table>
+				<table class="table">
+					<tr>
+						<td>
+							Cash
+						</td>
+						<td>
+							@Html.DisplayFor(model => model.Cash)
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Change Amount
+						</td>
+						<td>
+							@Html.DisplayFor(model => model.ChangeAmount)
+						</td>
+					</tr>
+					<tr>
+						<td>Due Amount</td>
+						<td>
+							@Html.DisplayFor(model => model.Due)
+						</td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+		<div class="col-md-4">
+
+		</div>
+		<div class="col-md-4 container">
+			<button id="forWaiter" class="btn btn-group-justified btn-default">Print</button>
+			<div id="waiterTicket">
+				<strong>Ticket</strong><br />
+				@Html.DisplayNameFor(model => model.TokenNO)
+				@Html.DisplayFor(model => model.TokenNO)
+				<br />
+				@Html.DisplayNameFor(model => model.Date)
+				@Html.DisplayFor(model => model.Date)
+				<table class="table table-condensed" style="border-top: 2px dotted black">
+
+					<tbody>
+						@foreach (SellDetails SellDetails in Model.SellDetailses)
+						{
+							<tr>
+								<td>-</td>
+								<td>@SellDetails.Quantity</td>
+								<td>@SellDetails.Item.Name</td>
+
+
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+</div>
+<p>
+	@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+	@Html.ActionLink("Back to List", "Index")
+</p>
+
+@section scripts
+	{
+	<script src="~/Scripts/PosRestaurant/SalesRegister/Receit.js"></script>
+}

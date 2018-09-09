@@ -1,0 +1,21 @@
+﻿@{
+	var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
+	string cLayout = "";
+	if (controller == "StockList")
+	{
+		cLayout = "~/Views/Shared/_StockListLayout.cshtml";
+	}
+	else if(controller == "SalesRegister")
+	{
+		cLayout = "~/Views/Shared/_SalesRegisterLayout.cshtml";
+	}
+	else if (controller == "Setting")
+	{
+		cLayout = "~/Views/Shared/_SettingLayout.cshtml";
+	}
+	else
+	{
+		cLayout = "~/Views/Shared/_Layout.cshtml";
+	}
+	Layout = cLayout;
+}

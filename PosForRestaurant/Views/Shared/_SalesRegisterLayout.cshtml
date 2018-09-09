@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - POS for Restaurant</title>
+	<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+	<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body style="">
+	@{
+		var pageName = ViewContext.RouteData.Values["action"].ToString();
+	}
+
+	<div class="container" style="color:black;">
+		<ul class="nav nav-tabs">
+			@if (pageName == "Terminal")
+			{
+				<li class="@(pageName == "Terminal" ? "active" : "")" id="TerminalTab">@Html.ActionLink("Terminal", "Terminal", "SalesRegister")</li>
+			}
+			else if (pageName == "Payment")
+			{
+				<li class="@(pageName == "Payment" ? "active" : "")" id="PaymentTab">Payment</li>
+			}
+			else
+			{
+				<li class="@(pageName == "Payment" ? "active" : "")" id="PaymentTab">Print Receit</li>
+			}
+
+		</ul>
+		<div style="border:1px groove grey; height:450px;" class="container body-content ">
+			@RenderBody()
+		</div>
+
+		<hr />
+		<a href="@Url.Action("Index", "Home")">
+			<button class="btn btn-default pull-right">
+				Home Menu
+			</button>
+		</a>
+		<footer>
+			<p>&copy; @DateTime.Now.Year - Refat Bin Mustaque</p>
+		</footer>
+	</div>
+
+	<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+	<script src="~/Scripts/bootstrap.min.js"></script>
+	<script src="~/Scripts/jquery.validate.min.js"></script>
+	<script src="~/Scripts/jquery.validate.js"></script>
+	<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+
+	@RenderSection("scripts", false);
+</body>
+</html>

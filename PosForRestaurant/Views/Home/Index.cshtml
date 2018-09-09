@@ -1,0 +1,19 @@
+﻿
+@{
+	ViewBag.Title = "Dashboard";
+}
+
+<div class="container" style="overflow:auto; margin: 30px">
+	<a href="@Url.Action("Terminal", "SalesRegister")">
+		<div style="float:left; width:200px; height:100px; background-color:#9370DB; color: white; padding:4px; border: 3px solid black; margin: 3px; text-align: center;padding-top:35px;">
+			Sales Register
+		</div>
+	</a>
+	
+	<a href="@Url.Action("ItemList", "StockList")">
+		<div style="float:left; width:200px; height:100px; background-color:#9370DB; color: white; padding:4px; border: 3px solid black; margin: 3px; text-align: center;padding-top:35px;">
+			Stock List
+		</div>
+	</a>
+</div>
+

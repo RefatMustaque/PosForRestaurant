@@ -1,0 +1,6 @@
+E:\Project\Task Toiree\PosForRestaurant\POS.Models\bin\Debug\POS.Models.dll
+E:\Project\Task Toiree\PosForRestaurant\POS.Models\bin\Debug\POS.Models.pdb
+E:\Project\Task Toiree\PosForRestaurant\POS.Models\obj\Debug\POS.Models.csprojAssemblyReference.cache
+E:\Project\Task Toiree\PosForRestaurant\POS.Models\obj\Debug\POS.Models.csproj.CoreCompileInputs.cache
+E:\Project\Task Toiree\PosForRestaurant\POS.Models\obj\Debug\POS.Models.dll
+E:\Project\Task Toiree\PosForRestaurant\POS.Models\obj\Debug\POS.Models.pdb

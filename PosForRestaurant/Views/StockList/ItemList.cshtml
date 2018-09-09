@@ -1,0 +1,36 @@
+﻿@model IEnumerable<POS.Models.EntityModels.Item>
+
+@{
+    ViewBag.Title = "ItemList";
+}
+
+
+<div class="container" style="height:448px;overflow-y: scroll;">
+
+	@foreach (var item in Model)
+	{
+		var base64 = Convert.ToBase64String(item.Image);
+		var imgsrc = string.Format("data:image/jpeg;base64,{0}", base64);
+		
+
+		<a href="@Url.Action("ItemDetailsView", "StockList", new { id = item.Id })">
+			<div style="float:left; width:250px; height:100px; background-color:#FF69B4; padding:4px; border: 3px solid black; margin: 3px;">
+				<div class="row">
+					<div class="col-md-4">
+						<img src="@imgsrc" style="max-width:50px;max-height:100px;" />
+					</div>
+					<div class="col-md-8">
+						<div style="color:black">@item.Barcode</div>
+						<div style="color:blue">@item.Name</div>
+						<div style="color:black"> Qty: <strong>@item.Quantity</strong></div>
+						<div style="color:black"> Price: @String.Format("{0:0.00}", item.SalesPrice)</div>
+					</div>
+				</div>
+			</div>
+		</a>
+
+
+
+
+			}
+</div>
